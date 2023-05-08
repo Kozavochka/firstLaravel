@@ -19,6 +19,6 @@ class ClubService implements ClubServiceContract
     }
     public function getDescription(): void
     {
-
+        //пасхаор4ка
     }
 }
