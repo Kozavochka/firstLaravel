@@ -18,11 +18,12 @@ class SponsorController extends Controller
        // $data = Sponsor::query()->get();
         $page = request('page', 1);
         $perPage = request('per_page', 1);
-
+        $sponsors=Sponsor::query()->with(['clubs'])->get();
 //        $data =Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
 //       dd($data->pluck('name'));
+        return view('sponsor', compact('sponsors'));
 
-        return SponsorResource::collection(
+        /*return SponsorResource::collection(
             QueryBuilder::for(Sponsor::class)
                // ->with(['clubs'])
                 ->allowedFilters([
@@ -35,7 +36,7 @@ class SponsorController extends Controller
                     })
                 ])
                 ->paginate($perPage, '*', 'page', $page)
-        );
+        );*/
     }
 
     /**
