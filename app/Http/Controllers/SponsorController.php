@@ -17,8 +17,11 @@ class SponsorController extends Controller
     {
         $page = request('page', 1);
         $perPage = request('per_page', 5);
-
-        $sponsors=Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);;
+        //Вместе с relation - всеми полями клуба
+//        $sponsors=Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
+        //Только с количеством клубов у каждого спонсора
+        $sponsors=Sponsor::query()->withCount(['clubs'])
+            ->paginate($perPage, '*', 'page', $page);
 
         return view('sponsor', compact('sponsors'));
 

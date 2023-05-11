@@ -14,7 +14,7 @@
                 <tr>
                     <td> {{$sponsor->name}}</td>
                     <td> {{$sponsor->type}}</td>
-                    <td> {{$sponsor->clubs()->count()}}</td> {{--Обращение к количеству через relation, а не загрузки всех клубов--}}
+                    <td> {{$sponsor->clubs_count}}</td> {{--так как было подгружено только кол-во клубов, то используется так--}}
                     <td><img  src="{{$sponsor->photo_url}}" alt="Photo" class="sponsor_img"></td>
                 </tr>
             @endforeach
