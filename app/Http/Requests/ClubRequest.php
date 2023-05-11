@@ -24,12 +24,15 @@ class ClubRequest extends FormRequest
                 'required',
                 Rule::unique('clubs')->ignore($this->route('clubs')),
             ],
-            'players' =>[
-              'required',
-              'integer',
-            ],
             'description' => [
-                'string'
+                'string',
+            ],
+            'players_count' => [
+                'integer',
+            ],
+            'sponsor_id' => [
+                'integer',
+                Rule::exists('sponsors','id'),
             ]
         ];
     }

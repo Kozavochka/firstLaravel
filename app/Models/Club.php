@@ -20,8 +20,9 @@ class Club extends Model
     use HasFactory;
     protected $fillable=[
         'name',
-        'players',
+        'players_count',
         'description',
+        'sponsor_id',
     ];
 
     //У Клуба несколько игроков
