@@ -1,6 +1,20 @@
+body{
+    margin: 0;
+}
+.container{
+    margin: 0 auto;
+    max-width: 800px;
+}
+.row{
+    display: flex;
+    justify-content: center;
+}
+.sponsor_img{
+    width: 100px;
+    height: 100px;
+}
 table {
-
-    font-size: 14px;
+    font-size: 25px;
     border-collapse: collapse;
     text-align: center;
 }

@@ -17,8 +17,8 @@ class SponsorController extends Controller
     {
        // $data = Sponsor::query()->get();
         $page = request('page', 1);
-        $perPage = request('per_page', 1);
-        $sponsors=Sponsor::query()->with(['clubs'])->get();
+        $perPage = request('per_page', 5);
+        $sponsors=Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);;
 //        $data =Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
 //       dd($data->pluck('name'));
 
