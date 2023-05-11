@@ -23,7 +23,9 @@ class ClubController extends Controller
     public function index()//GET - получение всех клубов
     {       $page = request('page', 1);
             $perPage = request('per_page', 10);
+
             $clubs=Club::query()->with(['sponsor'])->paginate($perPage, '*', 'page', $page);
+
 //            $this->clubServ->getClubs();
 
             return view('clubs',compact('clubs'));
