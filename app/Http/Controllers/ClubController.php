@@ -22,11 +22,13 @@ class ClubController extends Controller
 
     public function index()//GET - получение всех клубов
     {       $page = request('page', 1);
-            $perPage = request('per_page', 1);
-//            $data=Club::query()->with(['sponsor'])->paginate($perPage, '*', 'page', $page);
-            $this->clubServ->getClubs();
+            $perPage = request('per_page', 10);
+            $clubs=Club::query()->with(['sponsor'])->paginate($perPage, '*', 'page', $page);
+//            $this->clubServ->getClubs();
 
-            return ClubResource::collection(
+            return view('clubs',compact('clubs'));
+
+           /* return ClubResource::collection(
                 QueryBuilder::for(Club::class)
                     ->with(['sponsor'])
                     ->with(['players'])
@@ -37,7 +39,7 @@ class ClubController extends Controller
                         })
                     ])
                     ->paginate($perPage, '*', 'page', $page)
-            );
+            );*/
     }
 
 

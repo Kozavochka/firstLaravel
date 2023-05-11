@@ -21,7 +21,7 @@ class SponsorController extends Controller
         $sponsors=Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);;
 //        $data =Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
 //       dd($data->pluck('name'));
-
+//        dd($sponsors);
         return view('sponsor', compact('sponsors'));
 
         /*return SponsorResource::collection(

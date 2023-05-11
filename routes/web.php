@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClubController;
 use App\Http\Controllers\SponsorController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('sponsor',SponsorController::class);
+Route::resource('sponsor',SponsorController::class)->names('sponsors');
+Route::resource('clubs',ClubController::class)->names('clubs');

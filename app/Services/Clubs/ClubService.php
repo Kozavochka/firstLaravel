@@ -11,7 +11,7 @@ class ClubService implements ClubServiceContract
     {
         $clubs=Club::query()->get();
 
-//        dd($clubs->pluck('description', 'name'));
+//        dd($clubs->pluck('id', 'name'));
         /*$club_decription=$clubs->map(function ($item, $key){
            return $item->name." - ".$item->description;
         });*/

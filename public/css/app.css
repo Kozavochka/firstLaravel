@@ -7,11 +7,15 @@ body{
 }
 .row{
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .sponsor_img{
     width: 100px;
     height: 100px;
+}
+.href_pages{
+    margin: 0 auto;
 }
 table {
     font-size: 25px;
