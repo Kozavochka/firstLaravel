@@ -19,7 +19,7 @@ class SponsorRequest extends FormRequest
             'name' => [
                 'string',
                 'required',
-                Rule::unique('sponsors')->ignore($this->route('sponsors')),
+                Rule::unique('sponsors')->ignore($this->route('sponsor')),
             ],
             'type' => [
                 'string',
@@ -28,6 +28,9 @@ class SponsorRequest extends FormRequest
             'location' => [
                 'string',
                 'max:50',
+            ],
+            'photo_url' => [
+                'string',
             ]
         ];
     }

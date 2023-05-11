@@ -21,6 +21,7 @@ class SponsorController extends Controller
         $sponsors=Sponsor::query()->with(['clubs'])->get();
 //        $data =Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
 //       dd($data->pluck('name'));
+
         return view('sponsor', compact('sponsors'));
 
         /*return SponsorResource::collection(
@@ -88,9 +89,13 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SponsorRequest $request, $id)
+    public function update(SponsorRequest $request, Sponsor $sponsor)//PATCH/PUT запрос. PATCH - обновление сущ. . PUT - положить новую запись
     {
-        //
+        $data=$request->prepareData();
+
+        $sponsor->update($data);
+
+        return new SponsorResource($sponsor);
     }
 
     /**

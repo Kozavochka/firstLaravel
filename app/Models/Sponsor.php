@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $type
  * @property string $location
+ * @property string $photo_url
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -22,6 +23,7 @@ class Sponsor extends Model
         'name',
         'type',
         'location',
+        'photo_url',
     ];
 
     //Один ко многим
