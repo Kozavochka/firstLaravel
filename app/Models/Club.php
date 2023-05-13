@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
- * @property int $players
+ * @property int $players_count
  * @property string $description
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -23,6 +23,7 @@ class Club extends Model
         'players_count',
         'description',
         'sponsor_id',
+        'league_id',
     ];
 
     //У Клуба несколько игроков
@@ -34,5 +35,10 @@ class Club extends Model
     public function sponsor()
     {
         return $this->belongsTo(Sponsor::class);
+    }
+
+    public function league()
+    {
+        return $this->belongsTo(League::class);
     }
 }

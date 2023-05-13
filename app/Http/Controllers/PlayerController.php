@@ -13,11 +13,10 @@ class PlayerController extends Controller
     public function index()
     {
         //Получение игроков, меньше 30-ли лет, запросом
-        $data = Player::query()
+       /* $data = Player::query()
             ->with(['club'])
             ->where('age','<',30)
-            /*->take(2)*/
-            ->get();
+            ->get();*/
 
             //Пагинация
         /*$data = Player::query()
@@ -32,13 +31,17 @@ class PlayerController extends Controller
 
 
         //Строка с текстом
-        dump($data->reduce(function($str, $player) {
+       /* dump($data->reduce(function($str, $player) {
             return $str . ' | ' . $player->name .' plays in '. $player->club->name;
-        }, ''));
+        }, ''));*/
 
         //Вывод игрока и его клуба
-        dd($data->pluck('club.name','name'));
+//        dd($data->pluck('club.name','name'));
 
+        $data=Player::query()
+            ->with('club')
+//            ->old()
+            ->get();
 
         return PlayerResource::collection($data);
     }

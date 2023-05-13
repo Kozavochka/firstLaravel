@@ -18,8 +18,10 @@ class PlayerResource extends JsonResource
         return [
             'name' => $this->name,
             'age' => $this->age,
-            'is_free' => $this->is_free,
-            'club_id' => $this->club_id,
+//            'is_free' => $this->is_free,
+            'club' => $this->club?->name,
+            'price' => $this->player_price,
+            'league' => $this->player_league->name,
         ];
     }
 }
