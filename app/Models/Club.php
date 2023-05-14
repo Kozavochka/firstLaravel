@@ -41,4 +41,9 @@ class Club extends Model
     {
         return $this->belongsTo(League::class);
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Game::class);
+    }
 }

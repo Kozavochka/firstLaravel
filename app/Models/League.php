@@ -29,4 +29,6 @@ class League extends Model
     {
        return $this->hasManyThrough(Player::class,Club::class);
     }
+
+
 }

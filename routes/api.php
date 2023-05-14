@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ClubSponsorController;
 use App\Http\Controllers\ClubsSponsorController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\InfoPlayController;
 use App\Http\Controllers\LeagueController;
 use App\Http\Controllers\PlayerController;
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('clubs',ClubController::class);
 Route::resource('players',PlayerController::class);
 Route::resource('leagues',LeagueController::class);
+Route::resource('games',GameController::class);
 
 //Посредник у группы рутов
 Route::group(['middleware' => 'test'], function (){
