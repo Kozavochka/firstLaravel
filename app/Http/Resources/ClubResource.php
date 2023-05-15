@@ -20,8 +20,8 @@ class ClubResource extends JsonResource
         'players_count' => $this->players_count,
         'description' => $this->description,
         'sponsor' => $this?->sponsor?->name,
-        'players' => PlayerResource::collection($this->players),
-        'league' => $this->league->name,
+//        'players' => PlayerResource::collection($this->players),
+//        'league' => $this->league->name,
         ];
 
     }

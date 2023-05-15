@@ -10,7 +10,8 @@ class GameResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'name' => $this->name,
+            'clubs' => ClubResource::collection($this->clubs),
         ];
     }
 }

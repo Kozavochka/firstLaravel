@@ -3,18 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class GameRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +16,19 @@ class GameRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => [
+                'required',
+                'string',
+                Rule::unique('games')->ignore($this->route('games')),
+            ],
+            'clubs' => [
+                'array',
+                'required',
+            ],
+            'clubs.*' => [
+                'integer',
+                Rule::exists('clubs','id'),
+            ]
         ];
     }
 }
