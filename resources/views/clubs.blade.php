@@ -16,8 +16,9 @@
             </table>
             <div class="href_pages">
                 <a href="{{route('sponsors.index')}}">Спонсоры</a>
+                <a href="{{ route('prepare-export') }}">Экспорт</a>
             </div>
-
+            {{$clubs->withQueryString()->links('pagination::bootstrap-5')}}
         </div>
     </div>
 

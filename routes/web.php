@@ -21,8 +21,11 @@ Route::get('/', function () {
 });
 
 Route::resource('sponsor',SponsorController::class)->names('sponsors');
+
+Route::get('clubs/prepare-export',[ClubController::class, 'prepareExport'])->name('prepare-export');
+Route::get('clubs/export',[ClubController::class, 'export'])->name('export');
 Route::resource('clubs',ClubController::class)->names('clubs');
-Route::get('main',[MainController::class,'index'])->name('main');
+
 
 Route::group(['prefix' => 'admin'], function (){
     Route::resource('sponsors',SponsorController::class)->names('sponsors');
