@@ -24,13 +24,22 @@ class ClubController extends Controller
     {       $page = request('page', 1);
             $perPage = request('per_page', 10);
 
-            $clubs=Club::query()->with(['sponsor', 'players'])->paginate($perPage, '*', 'page', $page);
-
+//            $clubs=Club::query()->with(['sponsor', 'players'])->paginate($perPage, '*', 'page', $page);
+            $clubs=QueryBuilder::for(Club::class)
+                ->with(['sponsor'])
+                ->with(['players'])
+                ->allowedFilters([
+                    //наличие спонсора
+                    AllowedFilter::callback('has_sponsor', function (Builder $query, $value) {
+                        $query->whereHas('sponsor');
+                    })
+                ])
+                ->paginate($perPage, '*', 'page', $page);
 //            $this->clubServ->getClubs();
 
-//            return view('clubs',compact('clubs'));
+            return view('clubs',compact('clubs'));
 
-            return ClubResource::collection(
+           /* return ClubResource::collection(
                 QueryBuilder::for(Club::class)
                     ->with(['sponsor'])
                     ->with(['players'])
@@ -41,7 +50,7 @@ class ClubController extends Controller
                         })
                     ])
                     ->paginate($perPage, '*', 'page', $page)
-            );
+            );*/
     }
 
 

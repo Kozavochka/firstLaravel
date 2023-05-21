@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
 {{--        @vite(['resources/css/app.css','resources/js/app.js'])--}}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>

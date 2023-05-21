@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class MainController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
-        return view('main');
+        return view('layouts.admin');
     }
 }

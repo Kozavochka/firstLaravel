@@ -23,8 +23,8 @@ class SponsorController extends Controller
         $sponsors=Sponsor::query()->withCount(['clubs'])
             ->paginate($perPage, '*', 'page', $page);
 
-//        return view('sponsor', compact('sponsors'));
-        return view('layouts.admin');
+        return view('sponsor', compact('sponsors'));
+//        return view('layouts.admin');
 
         /*return SponsorResource::collection(
             QueryBuilder::for(Sponsor::class)

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Clubs\ClubService;
 use App\Services\Clubs\Contracts\ClubServiceContract;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->singleton(ClubServiceContract::class, ClubService::class);
+
     }
 }

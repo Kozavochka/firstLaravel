@@ -16,8 +16,11 @@
             </table>
             <div class="href_pages">
                 <a href="{{route('sponsors.index')}}">Спонсоры</a>
+                <a href="{{url()->current()}}?filter[has_sponsor]=true">Фильтр</a>
+                <a href="{{ url()->current() }}?{{ http_build_query(request()->except('filter')) }}">Сбросить фильтр</a>
             </div>
-
+{{--            {{ $clubs->appends(request()->all())->links() }}--}}
+            {{ $clubs->withQueryString()->links('pagination::bootstrap-5') }}
         </div>
     </div>
 

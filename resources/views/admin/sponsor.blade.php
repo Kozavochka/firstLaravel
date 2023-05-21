@@ -19,9 +19,7 @@
                     </tr>
                 @endforeach
             </table>
-            <div class="href_pages">
-                <a href="{{route('clubs.index')}}">Клубы</a>
-            </div>
+
         </div>
     </div>
 

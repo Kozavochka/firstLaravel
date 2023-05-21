@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminSponsorController;
 use App\Http\Controllers\ClubController;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\SponsorController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,9 @@ Route::get('/', function () {
 
 Route::resource('sponsor',SponsorController::class)->names('sponsors');
 Route::resource('clubs',ClubController::class)->names('clubs');
-Route::get('main',[MainController::class,'index'])->name('main');
+Route::get('main',[AdminController::class,'index'])->name('main');
 
 Route::group(['prefix' => 'admin'], function (){
-    Route::resource('sponsors',SponsorController::class)->names('sponsors');
+    Route::get('/',[AdminController::class,'index'])->name('admin');
+    Route::resource('/sponsors',AdminSponsorController::class)->names('admin.sponsors');
 });
