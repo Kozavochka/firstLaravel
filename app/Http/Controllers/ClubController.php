@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClubRequest;
+use App\Http\Requests\ClubsExportRequest;
 use App\Http\Resources\ClubResource;
 use App\Models\Club;
 use App\Services\Clubs\Contracts\ClubServiceContract;
@@ -120,10 +121,24 @@ class ClubController extends Controller
 
     }
 
-    public function prepareExport(Request $request)
+    public function prepareExport(ClubsExportRequest $request)
     {
-        $clubs = Club::all();
+        /*$clubs = Club::all();
+
         Session::put('clubs', $clubs);
-        return redirect()->route('export');
+        return redirect()->route('export')*/;
+
+        $clubs = $request->validated();
+
+        $writer = SimpleExcelWriter::streamDownload('clubs.xlsx');
+        foreach($clubs['clubs'] as $id => $club){
+            $writer->addRow([
+                'id' => $id+1,
+                'name' => $club,
+            ]);
+
+        }
+        $writer->toBrowser();
+
     }
 }
