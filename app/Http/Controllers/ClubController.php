@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClubRequest;
+use App\Http\Requests\ClubsExportRequest;
 use App\Http\Resources\ClubResource;
 use App\Models\Club;
+use App\Services\Clubs\ClubsExport;
 use App\Services\Clubs\Contracts\ClubServiceContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-
+use Spatie\SimpleExcel\SimpleExcelWriter;
 class ClubController extends Controller
 {
     private $clubServ;
@@ -22,15 +25,23 @@ class ClubController extends Controller
 
     public function index()//GET - получение всех клубов
     {       $page = request('page', 1);
-            $perPage = request('per_page', 10);
+            $perPage = request('per_page', 5);
 
             $clubs=Club::query()->with(['sponsor', 'players'])->paginate($perPage, '*', 'page', $page);
 
 //            $this->clubServ->getClubs();
+        /*$writer = SimpleExcelWriter::streamDownload('your-export.xlsx');*/
+        /*foreach ($clubs as $club){
+            $writer->addRow([
+                'id' => $club->id,
+                'name' => $club->name,
+            ]);
+        }
+        $writer->toBrowser();*/
 
-//            return view('clubs',compact('clubs'));
+            return view('clubs',compact('clubs'));
 
-            return ClubResource::collection(
+           /* return ClubResource::collection(
                 QueryBuilder::for(Club::class)
                     ->with(['sponsor'])
                     ->with(['players'])
@@ -41,7 +52,7 @@ class ClubController extends Controller
                         })
                     ])
                     ->paginate($perPage, '*', 'page', $page)
-            );
+            );*/
     }
 
 
@@ -93,4 +104,14 @@ class ClubController extends Controller
             'result' => true,
         ];
     }
+
+
+
+
+    public function export()
+    {
+        ClubsExport::export();
+    }
+
+
 }
