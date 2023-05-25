@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{asset('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css ')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css ')}}">
+
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <!--
 `body` tag options:
@@ -83,9 +85,7 @@
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="" class="img-circle elevation-2" alt="User Image">
-                </div>
+
                 <div class="info">
                     <a href="#" class="d-block">Andrey Ermolov</a>
                 </div>
@@ -105,7 +105,26 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+                    <li class="nav-item">
+                        <a href=" {{route('admin-sponsors.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                               Sponsors
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=" {{route('admin.clubs.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                               Clubs
+                            </p>
+                        </a>
+                    </li>
+
+                </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -117,7 +136,7 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-
+                @yield('content')
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminClubController;
+use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\AdminSponsorController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SponsorController;
@@ -20,13 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('sponsor',SponsorController::class)->names('sponsors');
+Route::resource('sponsors',SponsorController::class)->names('sponsors');
 
-Route::get('clubs/prepare-export',[ClubController::class, 'prepareExport'])->name('prepare-export');
-Route::get('clubs/export',[ClubController::class, 'export'])->name('export');
+Route::get('clubs/export',[ClubController::class, 'export'])->name('export_clubs');
 Route::resource('clubs',ClubController::class)->names('clubs');
 
 
 Route::group(['prefix' => 'admin'], function (){
-    Route::resource('sponsors',SponsorController::class)->names('sponsors');
+    Route::resource('admin-sponsors',AdminSponsorController::class);
+    Route::resource('clubs',AdminClubController::class)->names('admin.clubs');
+    Route::get('/',[AdminIndexController::class,'index'])->name('admin');
 });

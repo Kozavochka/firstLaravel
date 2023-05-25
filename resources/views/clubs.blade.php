@@ -16,23 +16,9 @@
             </table>
             <div class="href_pages">
                 <a href="{{route('sponsors.index')}}">Спонсоры</a>
-{{--                <a href="{{ route('prepare-export') }}">Экспорт</a>--}}
-
+                <a href="{{ route('export_clubs') }}">Экспорт</a>
             </div>
 
-            <form method="GET" action="{{ route('prepare-export') }}">
-                @csrf
-                @foreach($clubs as $club)
-                <input type="hidden" name="clubs[]" value="{{ $club->name }}">
-                @endforeach
-                <button type="submit">Экспорт2</button>
-            </form>
-           {{-- <div class="export">
-                <form method="GET" action="{{ route('prepare-export') }}">
-                    <input type="button" name="clubs[]" value="{{ $clubs }}">
-                    <button type="submit">Экспорт2</button>
-                </form>
-            </div>--}}
             {{$clubs->withQueryString()->links('pagination::bootstrap-5')}}
         </div>
     </div>

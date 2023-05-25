@@ -6,6 +6,7 @@ use App\Http\Requests\ClubRequest;
 use App\Http\Requests\ClubsExportRequest;
 use App\Http\Resources\ClubResource;
 use App\Models\Club;
+use App\Services\Clubs\ClubsExport;
 use App\Services\Clubs\Contracts\ClubServiceContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -105,40 +106,12 @@ class ClubController extends Controller
     }
 
 
-    public function export(Request $request)
+
+
+    public function export()
     {
-        $clubs = Session::get('clubs');
-        // экспорт объектов
-
-        $writer = SimpleExcelWriter::streamDownload('clubs.xlsx');
-        foreach ($clubs as $club){
-            $writer->addRow([
-                'id' => $club->id,
-                'name' => $club->name,
-            ]);
-        }
-        $writer->toBrowser();
-
+        ClubsExport::export();
     }
 
-    public function prepareExport(ClubsExportRequest $request)
-    {
-        /*$clubs = Club::all();
 
-        Session::put('clubs', $clubs);
-        return redirect()->route('export')*/;
-
-        $clubs = $request->validated();
-
-        $writer = SimpleExcelWriter::streamDownload('clubs.xlsx');
-        foreach($clubs['clubs'] as $id => $club){
-            $writer->addRow([
-                'id' => $id+1,
-                'name' => $club,
-            ]);
-
-        }
-        $writer->toBrowser();
-
-    }
 }
