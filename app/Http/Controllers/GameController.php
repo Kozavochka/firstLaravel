@@ -13,11 +13,11 @@ class GameController extends Controller
 
     public function index()
     {
-       $data = Game::query()
+       $games = Game::query()
        ->with('clubs')
        ->get();
 
-       return $data;
+       return $games;
     }
 
 

@@ -35,7 +35,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="" class="nav-link">Home</a>
+                <a href="{{route('admin')}}" class="nav-link">Home</a>
             </li>
 
         </ul>
@@ -108,7 +108,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                     <li class="nav-item">
-                        <a href=" {{route('admin-sponsors.index')}}" class="nav-link">
+                        <a href=" {{route('admin.sponsors.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                Sponsors
@@ -120,6 +120,14 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                Clubs
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href=" {{route('admin.games.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                               Games
                             </p>
                         </a>
                     </li>

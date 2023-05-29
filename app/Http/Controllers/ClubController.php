@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\SimpleExcel\SimpleExcelWriter;
+use Dompdf\Dompdf;
 class ClubController extends Controller
 {
     private $clubServ;
@@ -113,5 +114,19 @@ class ClubController extends Controller
         ClubsExport::export();
     }
 
+    public function pdf_export()
+    {
+        $data = [
+            'title' => 'Пример PDF файла',
+            'content' => 'Это содержимое PDF файла'
+        ];
 
+        $pdf = new Dompdf();
+        /* Не распознает Русский.... */
+        $pdf->loadHtml(view('pdf.pdf', compact('data')));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
+        return $pdf->stream('example.pdf');
+    }
 }
