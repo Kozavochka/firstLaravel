@@ -122,7 +122,6 @@ class ClubController extends Controller
         ];
 
         $pdf = new Dompdf();
-        /* Не распознает Русский.... */
         $pdf->loadHtml(view('pdf.pdf', compact('data')));
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();

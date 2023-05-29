@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css ')}}">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <script src="https://kit.fontawesome.com/a1a14b61d0.js" crossorigin="anonymous"></script>
 </head>
 <!--
 `body` tag options:

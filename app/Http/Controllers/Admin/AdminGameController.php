@@ -1,24 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-
+use App\Events\SendGameMail;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\GameRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
-use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
-class GameController extends Controller
+class AdminGameController extends Controller
 {
 
     public function index()
     {
+        $page = request('page', 1);
+        $perPage = request('per_page', 10);
+
        $games = Game::query()
        ->with('clubs')
-       ->get();
-
-       return $games;
+       ->paginate($perPage, '*', 'page', $page);
+       return view('admin.games', compact('games'));
     }
 
 
@@ -40,11 +42,9 @@ class GameController extends Controller
     }
 
 
-    public function show(Game $game)
+    public function show($id)
     {
-        dd($game);
-
-        return view('show.game_show', compact('game'));
+        //
     }
 
 
@@ -63,20 +63,5 @@ class GameController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function pdf_export(Game $game)
-    {
-        $data = [
-            'title' => 'Отчёт игры',
-        ];
-
-        $pdf = new Dompdf();
-        $pdf->loadHtml(view('pdf.game_pdf', compact('data', 'game')));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-
-        return $pdf->stream('game.pdf');
     }
 }
