@@ -19,11 +19,11 @@
 
 <h1>{{ $data["title"] }}</h1>
 <div>
-    {{$game->name}}
+    <p>{{$game->created_at}} состоялся матч  "{{$game->name}}" между командами </p>
+    @foreach($game->clubs as $club)
+        <p> {{$club->name}} </p>
+    @endforeach
 </div>
 
-@foreach($game->clubs as $club)
-    <div> {{$club->name}} </div>
-@endforeach
 </body>
 </html>

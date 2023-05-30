@@ -21,6 +21,8 @@ class Game extends Model
     'name'
     ];
 
+    public $timestamps = true;
+
     public function clubs()
     {
         return $this->belongsToMany(Club::class);

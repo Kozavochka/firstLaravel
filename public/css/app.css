@@ -17,6 +17,9 @@ body{
 .href_pages{
     margin: 0 auto;
 }
+.href_pages a {
+    color: blue;
+}
 table {
     font-size: 25px;
     border-collapse: collapse;

@@ -29,7 +29,6 @@ class ClubController extends Controller
             $perPage = request('per_page', 5);
 
             $clubs=Club::query()->with(['sponsor', 'players'])->paginate($perPage, '*', 'page', $page);
-
 //            $this->clubServ->getClubs();
         /*$writer = SimpleExcelWriter::streamDownload('your-export.xlsx');*/
         /*foreach ($clubs as $club){
