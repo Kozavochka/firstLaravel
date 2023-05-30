@@ -35,9 +35,4 @@ Route::get('clubs/pdf-export',[ClubController::class, 'pdf_export'])->name('pdf_
 Route::resource('clubs',ClubController::class)->names('clubs');
 
 
-Route::group(['prefix' => 'admin'], function (){
-    Route::resource('games', AdminGameController::class)->names('admin.games');
-    Route::resource('sponsors',AdminSponsorController::class)->names('admin.sponsors');
-    Route::resource('clubs',AdminClubController::class)->names('admin.clubs');
-    Route::get('/',[AdminIndexController::class,'index'])->name('admin');
-});
+
