@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
 Route::resource('sponsors',SponsorController::class)->names('sponsors');
@@ -36,3 +36,7 @@ Route::resource('clubs',ClubController::class)->names('clubs');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
