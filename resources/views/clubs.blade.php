@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
@@ -18,6 +18,7 @@
                 <a href="{{route('sponsors.index')}}">Спонсоры</a>
                 <a href="{{ route('export_clubs') }}">Экспорт</a>
                 <a href="{{ route('pdf_export_clubs') }}">PDF</a>
+                <a href="{{route('login')}}">Home</a>
             </div>
 
             {{$clubs->withQueryString()->links('pagination::bootstrap-5')}}

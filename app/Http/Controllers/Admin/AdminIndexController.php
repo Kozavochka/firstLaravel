@@ -8,6 +8,8 @@ class AdminIndexController extends Controller
 {
     public function index()
     {
+        $this->authorize('view', auth()->user());
+
         return view('layouts.admin');
     }
 }

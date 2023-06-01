@@ -15,7 +15,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                <p>Доступные страницыы</p>
+                <p>Доступные страницы</p>
                 <div class="href_pages">
                     <a href="{{route('sponsors.index')}}">Спонсоры</a>
                     <a href="{{route('clubs.index')}}">Клубы</a>

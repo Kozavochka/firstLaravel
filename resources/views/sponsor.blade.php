@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('content')
 
 <div class="container">
@@ -21,6 +21,7 @@
         </table>
         <div class="href_pages">
             <a href="{{route('clubs.index')}}">Клубы</a>
+            <a href="{{route('login')}}">Home</a>
         </div>
     </div>
 </div>
