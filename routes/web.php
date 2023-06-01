@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('home');
 });
 
 Route::resource('sponsors',SponsorController::class)->names('sponsors');
@@ -33,7 +33,6 @@ Route::resource('games', GameController::class);
 Route::get('clubs/export',[ClubController::class, 'export'])->name('export_clubs');
 Route::get('clubs/pdf-export',[ClubController::class, 'pdf_export'])->name('pdf_export_clubs');
 Route::resource('clubs',ClubController::class)->names('clubs');
-
 
 
 
