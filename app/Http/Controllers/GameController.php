@@ -6,11 +6,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GameRequest;
 use App\Http\Resources\GameResource;
 use App\Models\Game;
+
+use App\Services\Games\Contracts\GamesPdfServiceContract;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+
+    private $pdfSerivce;
+
+    public function __construct(GamesPdfServiceContract $pdfServ)
+    {
+        $this->pdfSerivce = $pdfServ;
+    }
 
     public function index()
     {
@@ -42,7 +51,6 @@ class GameController extends Controller
 
     public function show(Game $game)
     {
-        dd($game);
 
         return view('show.game_show', compact('game'));
     }
@@ -68,15 +76,6 @@ class GameController extends Controller
 
     public function pdf_export(Game $game)
     {
-        $data = [
-            'title' => 'Отчёт игры',
-        ];
-
-        $pdf = new Dompdf();
-        $pdf->loadHtml(view('pdf.game_pdf', compact('data', 'game')));
-        $pdf->setPaper('A4', 'portrait');
-        $pdf->render();
-
-        return $pdf->stream('game.pdf');
+        $this->pdfSerivce->export($game);
     }
 }

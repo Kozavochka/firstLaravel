@@ -27,32 +27,10 @@ class ClubController extends Controller
     public function index()//GET - получение всех клубов
     {       $page = request('page', 1);
             $perPage = request('per_page', 5);
-
-            $clubs=Club::query()->with(['sponsor', 'players'])->paginate($perPage, '*', 'page', $page);
-//            $this->clubServ->getClubs();
-        /*$writer = SimpleExcelWriter::streamDownload('your-export.xlsx');*/
-        /*foreach ($clubs as $club){
-            $writer->addRow([
-                'id' => $club->id,
-                'name' => $club->name,
-            ]);
-        }
-        $writer->toBrowser();*/
-
+            $clubs=Club::query()
+                ->with(['sponsor'])
+                ->paginate($perPage, '*', 'page', $page);
             return view('clubs',compact('clubs'));
-
-           /* return ClubResource::collection(
-                QueryBuilder::for(Club::class)
-                    ->with(['sponsor'])
-                    ->with(['players'])
-                    ->allowedFilters([
-                        //наличие спонсора
-                        AllowedFilter::callback('has_sponsor', function (Builder $query, $value) {
-                            $query->whereHas('sponsor');
-                        })
-                    ])
-                    ->paginate($perPage, '*', 'page', $page)
-            );*/
     }
 
 

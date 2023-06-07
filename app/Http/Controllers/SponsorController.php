@@ -19,12 +19,13 @@ class SponsorController extends Controller
         $perPage = request('per_page', 5);
         //Вместе с relation - всеми полями клуба
 //        $sponsors=Sponsor::query()->with(['clubs'])->paginate($perPage, '*', 'page', $page);
+
         //Только с количеством клубов у каждого спонсора
         $sponsors=Sponsor::query()->withCount(['clubs'])
             ->paginate($perPage, '*', 'page', $page);
 
         return view('sponsor', compact('sponsors'));
-  
+
 
         /*return SponsorResource::collection(
             QueryBuilder::for(Sponsor::class)
@@ -84,13 +85,7 @@ class SponsorController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(SponsorRequest $request, Sponsor $sponsor)//PATCH/PUT запрос. PATCH - обновление сущ. . PUT - положить новую запись
     {
         $data=$request->prepareData();
