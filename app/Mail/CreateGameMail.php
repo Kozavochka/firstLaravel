@@ -40,7 +40,7 @@ class CreateGameMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'game_mail',
+            view: 'game_mail',/*!*/
         );
     }
 
