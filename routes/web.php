@@ -24,16 +24,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::group(['middleware' => 'auth'], function (){
+    Route::resource('sponsors',SponsorController::class)->names('sponsors');
 
-Route::resource('sponsors',SponsorController::class)->names('sponsors');
+    Route::get('games/export/{game}',[GameController::class, 'pdf_export'])->name('pdf_export_games');
+    Route::resource('games', GameController::class);
 
-Route::get('games/export/{game}',[GameController::class, 'pdf_export'])->name('pdf_export_games');
-Route::resource('games', GameController::class);
-
-Route::get('clubs/export',[ClubController::class, 'export'])->name('export_clubs');
-Route::get('clubs/pdf-export',[ClubController::class, 'pdf_export'])->name('pdf_export_clubs');
-Route::resource('clubs',ClubController::class)->names('clubs');
-
+    Route::get('clubs/export',[ClubController::class, 'export'])->name('export_clubs');
+    Route::get('clubs/pdf-export',[ClubController::class, 'pdf_export'])->name('pdf_export_clubs');
+    Route::resource('clubs',ClubController::class)->names('clubs');
+});
 
 
 Auth::routes();
