@@ -20,6 +20,7 @@
                 <a href="{{ route('export_clubs') }}">Экспорт</a>
             </div>
             {{$clubs->withQueryString()->links('pagination::bootstrap-5')}}
+            <div><a href="{{ route('admin.clubs.create') }}" class="btn btn-success">+ Добавить клуб</a></div>
         </div>
     </div>
 

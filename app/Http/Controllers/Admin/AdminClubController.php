@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClubRequest;
 use App\Models\Club;
+use App\Models\League;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 
 class AdminClubController extends Controller
@@ -19,25 +22,28 @@ class AdminClubController extends Controller
         return view('admin.clubs',compact('clubs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $leagues = League::query()
+            ->distinct()
+            ->get();
+
+        $sponsors = Sponsor::query()
+            ->distinct()
+            ->get();
+
+        return view('admin.clubs.create', compact('leagues', 'sponsors'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(ClubRequest $request)
     {
-        //
+        $data = $request->prepareData();
+
+        Club::query()
+            ->updateOrCreate($data);
+
+        return redirect(route('admin'));
     }
 
     /**

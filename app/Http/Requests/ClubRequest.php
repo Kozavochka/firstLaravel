@@ -33,6 +33,11 @@ class ClubRequest extends FormRequest
             'sponsor_id' => [
                 'integer',
                 Rule::exists('sponsors','id'),
+            ],
+            'league_id' =>
+            [
+                'integer',
+                Rule::exists('leagues','id'),
             ]
         ];
     }
