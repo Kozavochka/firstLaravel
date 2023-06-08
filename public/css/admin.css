@@ -45,3 +45,6 @@ th:first-child, td:first-child {
 a{
     color:white;
 }
+.add_href{
+    color: black;
+}

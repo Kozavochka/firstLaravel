@@ -43,24 +43,22 @@ class AdminSponsorController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+         return view('admin.sponsors.create');
     }
 
 
     public function store(SponsorRequest $request)
     {
+
         $data = $request->prepareData();
+//         dd($data);
+        Sponsor::query()
+            ->create($data);
 
-        $spons=Sponsor::query()->create($data);
-
-        return new SponsorResource($spons);
+        return redirect(route('admin'));
     }
 
     /**

@@ -43,14 +43,10 @@ class SponsorController extends Controller
         );*/
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('admin.sponsors.create');
     }
 
 
@@ -58,9 +54,13 @@ class SponsorController extends Controller
     {
         $data = $request->prepareData();
 
-        $spons=Sponsor::query()->create($data);
+        Sponsor::query()
+            ->create($data);
 
-        return new SponsorResource($spons);
+        return redirect(route('admin'));
+//        $spons=Sponsor::query()->create($data);
+
+//        return new SponsorResource($spons);
     }
 
     /**
