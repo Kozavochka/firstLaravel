@@ -26,9 +26,11 @@ class ClubRequest extends FormRequest
             ],
             'description' => [
                 'string',
+                'nullable'
             ],
             'players_count' => [
                 'integer',
+                'nullable'
             ],
             'sponsor_id' => [
                 'integer',
