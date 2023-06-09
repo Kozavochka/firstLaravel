@@ -63,15 +63,10 @@ class SponsorController extends Controller
 //        return new SponsorResource($spons);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(Sponsor $sponsor)
     {
-        //
+        return view('show.sponsor_show', compact('sponsor'));
     }
 
     /**

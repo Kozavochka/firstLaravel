@@ -1,7 +1,7 @@
     <div class="form-group">
         <div class="mb-3">
             <label for="name" class="form-label">Имя</label>
-            <input id="name" name="name"  class="form-control" type="text" placeholder="Введите имя спонсора" >
+            <input id="name" name="name"  class="form-control" type="text" placeholder="Введите имя спонсора">
         </div>
     </div>
     <div class="form-group">

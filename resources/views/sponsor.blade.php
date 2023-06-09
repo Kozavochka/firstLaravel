@@ -12,7 +12,8 @@
             </tr>
             @foreach($sponsors as $sponsor)
                 <tr>
-                    <td> {{$sponsor->name}}</td>
+                    <td><a style="color: white"
+                            href="{{route('sponsors.show', $sponsor)}}">{{$sponsor->name}}</a></td>
                     <td> {{$sponsor->type}}</td>
                     <td> {{$sponsor->clubs_count}}</td> {{--так как было подгружено только кол-во клубов, то используется так--}}
                     <td><img  src="{{$sponsor->photo_url}}" alt="Photo" class="sponsor_img"></td>

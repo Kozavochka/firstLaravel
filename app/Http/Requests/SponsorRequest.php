@@ -19,7 +19,7 @@ class SponsorRequest extends FormRequest
             'name' => [
                 'string',
                 'required',
-//                Rule::unique('sponsors')->ignore($this->route('sponsor')),
+                Rule::unique('sponsors')->ignore($this->route('sponsor')),
             ],
             'type' => [
                 'string',

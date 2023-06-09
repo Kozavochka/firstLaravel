@@ -23,6 +23,7 @@ class AdminSponsorController extends Controller
         $sponsors=
             QueryBuilder::for(Sponsor::class)
                 ->withCount(['clubs'])
+                ->with('clubs')
                 ->allowedFilters([
                     'type',//фильтр содержания по типу
                     AllowedFilter::exact('location'),//точечный по локации
@@ -72,31 +73,22 @@ class AdminSponsorController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(Sponsor $sponsor)
     {
-        //
+        return view('admin.sponsors.edit', compact('sponsor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(SponsorRequest $request, Sponsor $sponsor)//PATCH/PUT запрос. PATCH - обновление сущ. . PUT - положить новую запись
     {
         $data=$request->prepareData();
-
+//        dd($data);
+//        dd($sponsor);
         $sponsor->update($data);
-
-        return new SponsorResource($sponsor);
+        $sponsor->refresh();
+        return redirect(route('sponsors.show', $sponsor));
+//        return new SponsorResource($sponsor);
     }
 
     /**
