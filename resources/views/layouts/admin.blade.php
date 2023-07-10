@@ -17,16 +17,9 @@
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
 
     <script src="https://kit.fontawesome.com/a1a14b61d0.js" crossorigin="anonymous"></script>
+
+    @livewireStyles
 </head>
-<!--
-`body` tag options:
-
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
-
-  * sidebar-collapse
-  * sidebar-mini
--->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
@@ -147,6 +140,8 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
+{{--                <livewire:hello-admin />--}}
+{{--                @livewire('hello-admin')--}}
                 @yield('content')
             </div><!-- /.container-fluid -->
         </div>
@@ -198,5 +193,7 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard3.js')}}"></script>
+
+@livewireScripts
 </body>
 </html>
