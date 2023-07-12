@@ -28,6 +28,11 @@
                                 <a class="nav-link active" aria-current="page" href="{{route('admin.clubs.index')}}">Клубы</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{route('sponsor-clubs')}}">
+                                    Спонсор-клубы
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
                                    href="{{ url()->current() }}?{{ http_build_query(request()->except('filter')) }}">Сбросить
                                     фильтр</a>

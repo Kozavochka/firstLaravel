@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SponsorRequest;
 use App\Http\Resources\SponsorResource;
+use App\Models\Club;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
@@ -44,6 +45,16 @@ class AdminSponsorController extends Controller
 
     }
 
+    public function sponsor_clubs()
+    {
+        $sponsors = Club::query()
+            ->with('sponsor')
+            ->get()
+            ->groupBy('sponsor.name');//Группировка по имени спонсора.
+
+        return view('admin.spons-clubs', compact('sponsors'));
+
+    }
 
     public function create()
     {
