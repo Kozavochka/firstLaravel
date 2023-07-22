@@ -1,3 +1,4 @@
+
 <form wire:submit.prevent="submitForm">
     @foreach($sponsors as $sponsor)
         <div class="card card-body" style="max-width: 300px !important">
@@ -24,6 +25,7 @@
         </div>
     @endforeach
     <button type="submit">Submit</button>
-    <button type="button" wire:click="newSponsor" class="btn-success">Добавить</button>
+        <button type="button" wire:click="newSponsor" class="btn-success">Добавить</button>
 </form>
+
 

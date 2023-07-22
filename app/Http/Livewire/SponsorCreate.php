@@ -27,11 +27,6 @@ class SponsorCreate extends Component
         dd($this->sponsors);
     }
 
-    public function mount()
-    {
-
-    }
-
     public function newSponsor()
     {
         $this->sponsors[] = [

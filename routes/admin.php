@@ -15,6 +15,7 @@ Route::resource('games', AdminGameController::class)->names('admin.games');
 Route::get('/sponsor-clubs', [AdminSponsorController::class,'sponsor_clubs'])->name('sponsor-clubs');
 Route::resource('sponsors',AdminSponsorController::class)->names('admin.sponsors');
 
+Route::get('club-players',[AdminClubController::class,'club_players'])->name('club-players');
 Route::resource('clubs',AdminClubController::class)->names('admin.clubs');
 Route::get('/',[AdminIndexController::class,'index'])->name('admin');
 
